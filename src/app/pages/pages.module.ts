@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { PromedioComponent } from './promedio/promedio.component';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    SharedModule
+    ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class PagesModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-promedio',
@@ -9,11 +10,18 @@ export class PromedioComponent implements OnInit{
 
   public items: any[] = [];
   public promedio: boolean = false;
+  public myForm!: FormGroup;
 
-  constructor() {}
+  constructor( private formBuilder: FormBuilder ) {}
 
   ngOnInit(): void {
-    this.items = [];
+    this.myForm = this.formBuilder.group({
+      
+    });
+  }
+
+  addMateria() {
+    console.log('hola');
   }
 
   submit() {
