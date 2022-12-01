@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { PromedioComponent } from './promedio/promedio.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PagesRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    ComponentsModule
   ]
 })
 export class PagesModule { }

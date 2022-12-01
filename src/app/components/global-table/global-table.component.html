@@ -1,0 +1,28 @@
+<div class="col-12 justify-content-center text-center">
+    <h4>Materias</h4>
+    <table class="table table-sm table-responsive">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Materia</th>
+            <th>Nota</th>
+            <th>Cantidad de créditos</th>
+            <th>Total</th>
+            <th>Editar/Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tableBody; let i = index">
+            <th>{{ i+1 }}</th>
+            <td>{{ item.materia }}</td>
+            <td>{{ item.nota }}</td>
+            <td>{{ item.numberOfCredits }}</td>
+            <td>{{ item.total }}</td>
+            <td>
+                <button class="btn btn-primary m-1">Editar</button>
+                <button class="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>

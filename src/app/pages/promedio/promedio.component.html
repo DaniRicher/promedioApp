@@ -11,24 +11,33 @@
           <div class="row">
   
               <div class="col-12 col-sm-3 m-2">
-                  <input type="text" class="form-control" placeholder="Ingresa la Materia">
+                  <input type="text" class="form-control" formControlName="materia" placeholder="Ingresa la Materia">
               </div>
   
               <div class="col-12 col-sm-3 m-2">
-                  <input type="number" class="form-control" placeholder="Ingresa la nota">
+                  <input type="number" class="form-control" formControlName="nota" placeholder="Ingresa la nota">
               </div>
   
               <div class="col-12 col-sm-3 m-2">
-                  <input type="number" class="form-control" placeholder="Ingresa los créditos">
+                  <input type="number" class="form-control" formControlName="numberOfCredits" placeholder="Ingresa los créditos">
+                  
               </div>
-  
+
+              <div class="col-12 col-sm-2">
+                <button class="btn btn-primary m-2" (click)="addMateria()">Agregar</button>
+              </div>
+
           </div>
+
+          <app-global-table *ngIf="add"></app-global-table>
           
       </div>
+
+
           <div class="col-12 d-flex flex-row">
-            <button class="btn btn-primary m-2" (click)="addMateria()">Agregar Materia</button>
               <button class="btn btn-primary m-2" (click)="submit()">Cálcular</button>
           </div>
+
   </div>
   <div class="col-12" *ngIf="promedio">
       <h4>Su prómedio es de: </h4>
@@ -68,3 +77,4 @@
       </table>
   </div>
 </form>
+
