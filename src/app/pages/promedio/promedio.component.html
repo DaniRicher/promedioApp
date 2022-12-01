@@ -24,57 +24,23 @@
               </div>
 
               <div class="col-12 col-sm-2">
-                <button class="btn btn-primary m-2" (click)="addMateria()">Agregar</button>
+                <button class="btn btn-primary m-2" (click)="addMateria()" type="button">Agregar</button>
               </div>
 
           </div>
 
-          <app-global-table *ngIf="add"></app-global-table>
+          <app-global-table *ngIf="add" [tableBody]="materias"></app-global-table>
           
       </div>
 
 
           <div class="col-12 d-flex flex-row">
-              <button class="btn btn-primary m-2" (click)="submit()">Cálcular</button>
+              <button class="btn btn-primary m-2" type="submit" (click)="submit()">Cálcular</button>
           </div>
 
   </div>
-  <div class="col-12" *ngIf="promedio">
-      <h4>Su prómedio es de: </h4>
-      <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Materia</th>
-              <th scope="col">Nota</th>
-              <th scope="col">Cantidad de créditos</th>
-              <th scope="col">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td>Cálculo</td>
-              <td>300</td>
-              <td>4</td>
-              <td>1200</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td >Larry the Bird</td>
-              <td >Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-      </table>
-  </div>
 </form>
 
+
+<span>Value</span>
+<pre>{{ myForm.valid }}</pre>
