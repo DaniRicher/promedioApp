@@ -38,6 +38,13 @@ export class PromedioComponent implements OnInit{
     }
   }
 
+  campoEsValido( campo:string ){
+
+    return this.myForm.controls[campo].errors
+           && this.myForm.controls[campo].touched
+    
+  }
+
   getTotal() {
     this.total = 0;
     const nota = this.myForm.get('nota')?.value;
@@ -47,7 +54,7 @@ export class PromedioComponent implements OnInit{
   }
 
   submit() {
-    // this.promedio = true;
+    this.promedio = true;
     this.materias.forEach( data => {
       console.log(data);
     })

@@ -12,14 +12,19 @@
   
               <div class="col-12 col-sm-3 m-2">
                   <input type="text" class="form-control" formControlName="materia" placeholder="Ingresa la Materia">
+                  <span class="form-text text-danger" *ngIf="campoEsValido('materia')">Este campo es obligatorio</span>
               </div>
   
               <div class="col-12 col-sm-3 m-2">
                   <input type="number" class="form-control" formControlName="nota" placeholder="Ingresa la nota">
+                  <span class="form-text text-danger" *ngIf="campoEsValido('nota')">Este campo es obligatorio</span>
+
               </div>
   
               <div class="col-12 col-sm-3 m-2">
                   <input type="number" class="form-control" formControlName="numberOfCredits" placeholder="Ingresa los créditos">
+                  <span  class="form-text text-danger" 
+                         *ngIf="campoEsValido('numberOfCredits')">Este campo es obligatorio</span>
                   
               </div>
 
@@ -29,9 +34,12 @@
 
           </div>
 
-          <app-global-table *ngIf="add" [tableBody]="materias"></app-global-table>
+          <app-global-table *ngIf="materias.length > 0" [tableBody]="materias"></app-global-table>
           
       </div>
+
+      <h4 *ngIf="promedio && materias.length > 0">Su promedio es de: </h4>
+
 
 
           <div class="col-12 d-flex flex-row">
