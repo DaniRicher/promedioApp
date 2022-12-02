@@ -9,9 +9,7 @@ import { Materia } from '../../interfaces/materia.interface';
 export class GlobalTableComponent implements OnInit {
 
   @Input() header: string[] = [];
-  @Input() tableBody: Materia[] = [
-    { materia: '123', nota: 200, numberOfCredits: 2,total: 1 }
-  ];
+  @Input() tableBody: Materia[] = [];
 
   constructor() { }
 
@@ -20,6 +18,13 @@ export class GlobalTableComponent implements OnInit {
 
   delete( indice: number ) {
     this.tableBody.splice(indice, 1);
+    // this.actualizarPromedio();
   }
+
+  @Input() editar( indice: number ) {};
+  // @Input() actualizarPromedio() {};
+
+
+  
 
 }

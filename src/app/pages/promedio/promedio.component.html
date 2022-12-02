@@ -8,47 +8,67 @@
   <div class="row">
       <div class="col-12">
           
-          <div class="row">
+          <div class="row ">
   
-              <div class="col-12 col-sm-3 m-2">
-                  <input type="text" class="form-control" formControlName="materia" placeholder="Ingresa la Materia">
+              <div class="col-12 col-sm-4 col-md-3 p-1">
+                  <input type="text" class="form-control form-control-sm" 
+                         formControlName="materia" placeholder="Ingresa la Materia">
                   <span class="form-text text-danger" *ngIf="campoEsValido('materia')">Este campo es obligatorio</span>
               </div>
   
-              <div class="col-12 col-sm-3 m-2">
-                  <input type="number" class="form-control" formControlName="nota" placeholder="Ingresa la nota">
+              <div class="col-12 col-sm-3 col-md-2 p-1">
+                  <input type="number" class="form-control form-control-sm" 
+                         formControlName="nota" placeholder="Ingresa la nota" *ngIf="!cualitativa">
+                         <select class="form-select form-select-sm"
+                                 *ngIf="cualitativa"
+                                 formControlName="nota">
+                            <option selected>Seleccione nota</option>
+                            <option value="475">Sobresaliente</option>
+                            <option value="425">Destacado</option>
+                            <option value="375">Satisfactorio</option>
+                            <option value="325">Basico</option>
+                            <option value="0">No cumplimiento</option>
+                          </select>
                   <span class="form-text text-danger" *ngIf="campoEsValido('nota')">Este campo es obligatorio</span>
 
               </div>
   
-              <div class="col-12 col-sm-3 m-2">
-                  <input type="number" class="form-control" formControlName="numberOfCredits" placeholder="Ingresa los créditos">
+              <div class="col-12 col-sm-4 col-md-3 p-1">
+                  <input type="number" class="form-control form-control-sm" 
+                         formControlName="numberOfCredits" placeholder="Ingresa los créditos">
                   <span  class="form-text text-danger" 
                          *ngIf="campoEsValido('numberOfCredits')">Este campo es obligatorio</span>
                   
               </div>
-
-              <div class="col-12 col-sm-2">
-                <button class="btn btn-primary m-2" (click)="addMateria()" type="button">Agregar</button>
+              <div class="col-sm-3 col-md-3">
+                  <div class="row align-items-center">
+                      <div class="col-6 p-1">
+                            <button class="btn btn-primary btn-sm" 
+                                    (click)="addMateria()" type="submit">Agregar</button>
+                        </div>
+                        <div class="col-5 p-1">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" (change)="esCualitativa()" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">¿Cualitativa?</label>
+                            </div>
+                        </div>
+                  </div>
               </div>
+
+              
 
           </div>
 
-          <app-global-table *ngIf="materias.length > 0" [tableBody]="materias"></app-global-table>
+          <app-global-table *ngIf="materias.length > 0" [tableBody]="materias"
+                            [editar]="editar"></app-global-table>
           
       </div>
 
-      <h4 *ngIf="promedio && materias.length > 0">Su promedio es de: </h4>
+      <h4 *ngIf="promedio && materias.length > 0">Su promedio es de: {{ calculate | number: '1.0-0' }}</h4>
 
-
-
-          <div class="col-12 d-flex flex-row">
-              <button class="btn btn-primary m-2" type="submit" (click)="submit()">Cálcular</button>
+          <div class="col-12 d-flex flex-row"  *ngIf="promedio && materias.length > 0">
+              <button class="btn btn-primary m-2" type="button" (click)="guardar()">Guardar</button>
           </div>
 
   </div>
 </form>
-
-
-<span>Value</span>
-<pre>{{ myForm.valid }}</pre>

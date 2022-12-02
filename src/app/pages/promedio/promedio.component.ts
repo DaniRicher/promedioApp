@@ -13,7 +13,11 @@ export class PromedioComponent implements OnInit{
   public promedio: boolean = false;
   public myForm!: FormGroup;
   public total: number = 0;
-  public add: boolean = false;
+  public cualitativa: boolean = false;
+
+  public calculate: number = 0;
+  public totalSuma: number = 0
+  public totalCreditos: number = 0
 
   constructor( private formBuilder: FormBuilder ) {}
 
@@ -26,18 +30,6 @@ export class PromedioComponent implements OnInit{
     });
   }
 
-  addMateria() {
-
-    if( !this.myForm.invalid ) {
-
-      this.add = true;
-      this.getTotal();
-      this.materias.push(this.myForm.value);
-      this.myForm.reset();
-
-    }
-  }
-
   campoEsValido( campo:string ){
 
     return this.myForm.controls[campo].errors
@@ -45,19 +37,65 @@ export class PromedioComponent implements OnInit{
     
   }
 
+  addMateria() {
+
+    if( !this.myForm.invalid ) {
+
+      this.getTotal();
+      this.materias.push(this.myForm.value);
+      this.myForm.reset();
+      this.calcularPromedio();
+
+    }
+  }
+
   getTotal() {
+
     this.total = 0;
     const nota = this.myForm.get('nota')?.value;
     const cantidadDeCreditos = this.myForm.get('numberOfCredits')?.value;
     this.total = nota * cantidadDeCreditos;
     this.myForm.get('total')?.setValue(this.total);
+
   }
 
-  submit() {
+  calcularPromedio() {
+
     this.promedio = true;
-    this.materias.forEach( data => {
-      console.log(data);
-    })
+    this.totalSuma = 0;
+    this.totalCreditos = 0;
+    
+    this.materias.forEach( (materia: Materia) => {
+
+      const { total, numberOfCredits  } = materia;
+      this.totalSuma += total;
+      this.totalCreditos += numberOfCredits;
+
+    });
+
+    this.calculate = (this.totalSuma/this.totalCreditos);
+  }
+
+  guardar() {
+    console.log('guardando...');
+  }
+
+  delete(indice: number) {
+
+    console.log(this.materias);
+    // this.materias.splice(indice, 1);
+  }
+
+  editar( index: number) {
+    console.log(index);
+  }
+
+  esCualitativa() {
+
+    if ( this.cualitativa ) {
+      return this.cualitativa = false;
+    }
+    return this.cualitativa = true;
   }
 
 }
