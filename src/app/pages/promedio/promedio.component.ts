@@ -25,6 +25,7 @@ export class PromedioComponent implements OnInit{
     this.myForm = this.formBuilder.group({
       materia: ['', [ Validators.required ]],
       nota: ['', [ Validators.required ]],
+      notaCualitativa: ['', [ Validators.required ]],
       numberOfCredits: ['', [ Validators.required ]],
       total: [ '',  [] ],
     });
@@ -95,6 +96,7 @@ export class PromedioComponent implements OnInit{
     if ( this.cualitativa ) {
       return this.cualitativa = false;
     }
+    this.myForm.get('nota')?.setValue('');
     return this.cualitativa = true;
   }
 

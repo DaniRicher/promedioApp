@@ -8,7 +8,7 @@
   <div class="row">
       <div class="col-12">
           
-          <div class="row ">
+          <div class="row" style="margin: 10px;">
   
               <div class="col-12 col-sm-4 col-md-3 p-1">
                   <input type="text" class="form-control form-control-sm" 
@@ -21,15 +21,15 @@
                          formControlName="nota" placeholder="Ingresa la nota" *ngIf="!cualitativa">
                          <select class="form-select form-select-sm"
                                  *ngIf="cualitativa"
-                                 formControlName="nota">
-                            <option selected>Seleccione nota</option>
+                                 formControlName="notaCualitativa">
+                            <option [selected]="true">Seleccione nota</option>
                             <option value="475">Sobresaliente</option>
                             <option value="425">Destacado</option>
                             <option value="375">Satisfactorio</option>
                             <option value="325">Basico</option>
                             <option value="0">No cumplimiento</option>
                           </select>
-                  <span class="form-text text-danger" *ngIf="campoEsValido('nota')">Este campo es obligatorio</span>
+                  <span class="form-text text-danger" *ngIf="campoEsValido('notaCualitativa') || campoEsValido('nota')">Este campo es obligatorio</span>
 
               </div>
   
@@ -40,21 +40,20 @@
                          *ngIf="campoEsValido('numberOfCredits')">Este campo es obligatorio</span>
                   
               </div>
-              <div class="col-sm-3 col-md-3">
-                  <div class="row align-items-center">
-                      <div class="col-6 p-1">
-                            <button class="btn btn-primary btn-sm" 
-                                    (click)="addMateria()" type="submit">Agregar</button>
-                        </div>
-                        <div class="col-5 p-1">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" (change)="esCualitativa()" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">¿Cualitativa?</label>
-                            </div>
-                        </div>
-                  </div>
-              </div>
 
+              <div class="col-12 col-sm-2 col-md-2 p-1 ">
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-primary btn-sm" style="margin-right: 10px;"
+                             (click)="addMateria()" type="submit">Agregar</button>
+                    
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" (change)="esCualitativa()" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">¿Cualitativa?</label>
+                    </div>
+
+                </div>
+                
+              </div>
               
 
           </div>
