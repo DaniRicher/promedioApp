@@ -25,7 +25,6 @@ export class PromedioComponent implements OnInit{
     this.myForm = this.formBuilder.group({
       materia: ['', [ Validators.required ]],
       nota: ['', [ Validators.required ]],
-      notaCualitativa: ['', [ Validators.required ]],
       numberOfCredits: ['', [ Validators.required ]],
       total: [ '',  [] ],
     });
@@ -75,20 +74,25 @@ export class PromedioComponent implements OnInit{
     });
 
     this.calculate = (this.totalSuma/this.totalCreditos);
+
   }
 
   guardar() {
     console.log('guardando...');
   }
 
-  delete(indice: number) {
+  delete() {
 
-    console.log(this.materias);
-    // this.materias.splice(indice, 1);
+    this.calcularPromedio();
+
   }
 
-  editar( index: number) {
-    console.log(index);
+  editar( indice: any ) {
+
+    const materiaEdit = this.materias[indice];
+
+    console.log(materiaEdit);
+
   }
 
   esCualitativa() {
@@ -96,7 +100,7 @@ export class PromedioComponent implements OnInit{
     if ( this.cualitativa ) {
       return this.cualitativa = false;
     }
-    this.myForm.get('nota')?.setValue('');
+    // this.myForm.get('nota')?.setValue('0');
     return this.cualitativa = true;
   }
 

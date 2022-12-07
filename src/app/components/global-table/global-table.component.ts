@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Materia } from '../../interfaces/materia.interface';
 
 @Component({
@@ -8,6 +8,9 @@ import { Materia } from '../../interfaces/materia.interface';
 })
 export class GlobalTableComponent implements OnInit {
 
+  @Output() delete = new EventEmitter<any>();
+  @Output() edit = new EventEmitter<any>();
+
   @Input() header: string[] = [];
   @Input() tableBody: Materia[] = [];
 
@@ -16,13 +19,14 @@ export class GlobalTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  delete( indice: number ) {
+  onDelete( indice: number ) {
     this.tableBody.splice(indice, 1);
-    // this.actualizarPromedio();
+    this.delete.emit(indice);
   }
 
-  @Input() editar( indice: number ) {};
-  // @Input() actualizarPromedio() {};
+  onEditar( indice: number ) {
+    this.edit.emit(indice);
+  };
 
 
   

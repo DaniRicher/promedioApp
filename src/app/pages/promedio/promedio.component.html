@@ -21,7 +21,7 @@
                          formControlName="nota" placeholder="Ingresa la nota" *ngIf="!cualitativa">
                          <select class="form-select form-select-sm"
                                  *ngIf="cualitativa"
-                                 formControlName="notaCualitativa">
+                                 formControlName="nota">
                             <option [selected]="true">Seleccione nota</option>
                             <option value="475">Sobresaliente</option>
                             <option value="425">Destacado</option>
@@ -29,7 +29,7 @@
                             <option value="325">Basico</option>
                             <option value="0">No cumplimiento</option>
                           </select>
-                  <span class="form-text text-danger" *ngIf="campoEsValido('notaCualitativa') || campoEsValido('nota')">Este campo es obligatorio</span>
+                  <span class="form-text text-danger" *ngIf="campoEsValido('nota')">Este campo es obligatorio</span>
 
               </div>
   
@@ -59,7 +59,8 @@
           </div>
 
           <app-global-table *ngIf="materias.length > 0" [tableBody]="materias"
-                            [editar]="editar"></app-global-table>
+                            (edit)="editar( $event )"
+                            (delete)="delete()"></app-global-table>
           
       </div>
 
@@ -71,3 +72,5 @@
 
   </div>
 </form>
+
+<pre> {{  myForm.valid }}</pre>
