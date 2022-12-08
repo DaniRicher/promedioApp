@@ -22,7 +22,7 @@
                          <select class="form-select form-select-sm"
                                  *ngIf="cualitativa"
                                  formControlName="nota">
-                            <option [selected]="true">Seleccione nota</option>
+                            <option [selected]="!cualitativa" value="">Seleccione nota</option>
                             <option value="475">Sobresaliente</option>
                             <option value="425">Destacado</option>
                             <option value="375">Satisfactorio</option>
@@ -74,3 +74,4 @@
 </form>
 
 <pre> {{  myForm.valid }}</pre>
+<pre> {{  myForm.get('nota')?.value }}</pre>

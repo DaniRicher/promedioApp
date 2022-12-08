@@ -72,8 +72,9 @@ export class PromedioComponent implements OnInit{
       this.totalCreditos += numberOfCredits;
 
     });
-
     this.calculate = (this.totalSuma/this.totalCreditos);
+    this.myForm.get('nota')?.setValue('');
+
 
   }
 
@@ -100,7 +101,7 @@ export class PromedioComponent implements OnInit{
     if ( this.cualitativa ) {
       return this.cualitativa = false;
     }
-    // this.myForm.get('nota')?.setValue('0');
+    this.myForm.get('nota')?.setValue('');
     return this.cualitativa = true;
   }
 
